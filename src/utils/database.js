@@ -4,8 +4,13 @@ let db = null;
 
 export function getDb() {
   if (!db) {
-    db = SQLite.openDatabaseSync('patungan.db');
-    initTables();
+    try {
+      db = SQLite.openDatabaseSync('patungan.db');
+      initTables();
+    } catch (e) {
+      console.error('[database] init error:', e);
+      throw e;
+    }
   }
   return db;
 }
