@@ -8,7 +8,6 @@ import {
   StyleSheet,
   Alert,
   KeyboardAvoidingView,
-  Platform,
   ScrollView,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -82,7 +81,7 @@ export default function AddAnggotaModal({ visible, onClose, onSubmit, existingAn
       <View style={s.container}>
         <TouchableOpacity style={StyleSheet.absoluteFill} activeOpacity={1} onPress={handleClose} />
         <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          behavior="padding"
           style={s.keyboardWrap}
         >
           <View style={s.sheet}>

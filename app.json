@@ -6,13 +6,21 @@
     "sdkVersion": "54.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "backgroundColor": "#4A90D9"
+    },
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.bendahara.patungan"
     },
     "android": {
       "package": "com.bendahara.patungan",
-      "permissions": []
+      "permissions": [],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#4A90D9"
+      }
     },
     "plugins": [
       "@react-native-community/datetimepicker",

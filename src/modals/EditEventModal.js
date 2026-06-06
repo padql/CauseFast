@@ -117,7 +117,7 @@ export default function EditEventModal({ visible, onClose, onSubmit, event }) {
       <View style={s.container}>
         <TouchableOpacity style={StyleSheet.absoluteFill} activeOpacity={1} onPress={onClose} />
         <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          behavior="padding"
           style={s.keyboardWrap}
         >
           <View style={s.sheet}>
