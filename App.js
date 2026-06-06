@@ -5,10 +5,8 @@ import { ThemeProvider, useTheme } from './src/context/ThemeContext';
 import EventListScreen from './src/screens/EventListScreen';
 import EventDetailScreen from './src/screens/EventDetailScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
-import useUpdateChecker from './src/hooks/useUpdateChecker';
 
 function Main() {
-  useUpdateChecker();
   const [screen, setScreen] = useState('events');
   const [selectedEvent, setSelectedEvent] = useState(null);
   const { colors } = useTheme();

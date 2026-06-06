@@ -1,0 +1,41 @@
+name: Release APK
+
+on:
+  workflow_dispatch:
+    inputs:
+      eas_artifact_url:
+        description: 'EAS Artifact URL (dari hasil eas build)'
+        required: true
+        type: string
+      version:
+        description: 'Version tag (e.g., v1.0.1)'
+        required: false
+        type: string
+        default: ''
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download APK from EAS
+        run: |
+          curl -L -o CauseFast.apk "${{ inputs.eas_artifact_url }}"
+
+      - name: Set version
+        id: version
+        run: |
+          if [ -z "${{ inputs.version }}" ]; then
+            echo "tag=v1.0.0-$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
+          else
+            echo "tag=${{ inputs.version }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: CauseFast ${{ steps.version.outputs.tag }}
+          body: |
+            APK CauseFast — tinggal download & install.
+          files: CauseFast.apk
+          generate_release_notes: false

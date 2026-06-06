@@ -86,7 +86,7 @@ export default function EventListScreen({ onSelectEvent, onOpenSettings }) {
         <View>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Ionicons name="wallet-outline" size={24} color={colors.textPrimary} style={{ marginRight: 6 }} />
-            <Text style={s.headerTitle}>Kas Acara</Text>
+            <Text style={s.headerTitle}>CauseFast</Text>
           </View>
           <Text style={s.headerSub}>
             {events.length === 0

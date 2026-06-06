@@ -56,7 +56,7 @@ export async function shareKeWhatsApp(event) {
     `Total partisipan: ${anggota.length} orang`,
     
     '',
-    'Dikirim via Aplikasi Kas Acara',
+    'Dikirim via CauseFast',
   ].join('\n');
 
   const encoded = encodeURIComponent(laporan);

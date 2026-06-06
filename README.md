@@ -1,45 +1,39 @@
-# 💰 Kas Acara — Aplikasi Bendahara Patungan
+# CauseFast — Aplikasi Bendahara Patungan
 
 Aplikasi mobile untuk bendahara organisasi. Catat patungan/HTM acara, lacak progres cicilan anggota, dan share laporan langsung ke WhatsApp.
 
 ---
 
-## ✨ Fitur
+## Fitur
 
-- ✅ **Multi-event** — kelola banyak acara sekaligus
-- 📊 **Progress bar visual** — indikator dana terkumpul
-- 🤖 **Status otomatis** — Lunas / Nyicil / Belum Bayar dihitung otomatis
-- 💾 **Data persisten** — tersimpan di HP meski aplikasi ditutup
-- 📤 **Share ke WhatsApp** — laporan terformat rapi, dikelompokkan per status
-- 🗑️ **Long-press** untuk hapus event atau anggota
+- **Multi-event** — kelola banyak acara sekaligus
+- **Progress bar visual** — indikator dana terkumpul
+- **Status otomatis** — Lunas / Nyicil / Belum Bayar dihitung otomatis
+- **Data persisten** — tersimpan di HP meski aplikasi ditutup
+- **Share ke WhatsApp** — laporan terformat rapi, dikelompokkan per status
+- **Long-press** untuk hapus event atau anggota
 
 ---
 
-## 🚀 Cara Menjalankan
+## Cara Menjalankan
 
 ### Prasyarat
-- Node.js versi 18+
-- Aplikasi **Expo Go** di smartphone (App Store / Play Store)
+- Node.js 18+
+- Expo Go di smartphone (App Store / Play Store)
 
 ### Langkah
 
 ```bash
-# 1. Clone atau download folder ini
+git clone <repo-url>
 cd PatunganApp
-
-# 2. Install dependencies
 npm install
-
-# 3. Jalankan development server
 npx expo start
-
-# 4. Scan QR Code dengan Expo Go di HP
-#    (pastikan HP & laptop di WiFi yang sama)
+# Scan QR Code dengan Expo Go di HP
 ```
 
 ---
 
-## 📁 Struktur Folder
+## Struktur Folder
 
 ```
 PatunganApp/
@@ -49,40 +43,38 @@ PatunganApp/
 ├── babel.config.js
 └── src/
     ├── screens/
-    │   ├── EventListScreen.js    # Layar daftar acara
-    │   └── EventDetailScreen.js  # Layar detail + anggota
+    │   ├── EventListScreen.js
+    │   └── EventDetailScreen.js
     ├── components/
-    │   ├── EventCard.js          # Kartu acara di list
-    │   ├── MemberRow.js          # Baris anggota + badge
-    │   ├── ProgressBar.js        # Progress bar visual
-    │   └── StatusBadge.js        # Badge Lunas/Nyicil/Belum
+    │   ├── EventCard.js
+    │   ├── MemberRow.js
+    │   ├── ProgressBar.js
+    │   └── StatusBadge.js
     ├── modals/
-    │   ├── AddEventModal.js      # Form buat acara baru
-    │   ├── AddAnggotaModal.js    # Form tambah anggota
-    │   └── UpdatePayModal.js     # Form update cicilan
+    │   ├── AddEventModal.js
+    │   ├── AddAnggotaModal.js
+    │   └── UpdatePayModal.js
     └── utils/
-        ├── storage.js            # AsyncStorage CRUD
-        ├── statusHelper.js       # Logika status & format
-        ├── shareHelper.js        # Generator laporan WhatsApp
-        ├── colors.js             # Design tokens / tema warna
-        └── useFocusEffect.js     # Hook sederhana reload data
+        ├── storage.js
+        ├── statusHelper.js
+        ├── shareHelper.js
+        ├── colors.js
+        └── useFocusEffect.js
 ```
 
 ---
 
-## 🧠 Logika Status Otomatis
+## Logika Status Otomatis
 
 ```
-dibayar === 0              → ⬜ Belum
-0 < dibayar < tagihan      → 🟡 Nyicil
-dibayar >= tagihan         → ✅ Lunas
+dibayar === 0              -> Belum
+0 < dibayar < tagihan      -> Nyicil
+dibayar >= tagihan         -> Lunas
 ```
-
-Status selalu dihitung ulang saat data diperbarui. Tidak perlu input manual.
 
 ---
 
-## 📊 Struktur Data (AsyncStorage)
+## Struktur Data (AsyncStorage)
 
 ```json
 [
@@ -106,31 +98,23 @@ Status selalu dihitung ulang saat data diperbarui. Tidak perlu input manual.
 
 ---
 
-## 🔗 Dependensi
+## Setup EAS Build
 
-| Library | Kegunaan |
-|---------|----------|
-| `expo` | SDK utama |
-| `react-native` | Framework UI |
-| `@react-native-async-storage/async-storage` | Penyimpanan lokal |
-| `expo-linking` | Deep link ke WhatsApp |
-| `expo-status-bar` | Styling status bar HP |
+Project ini sudah siap untuk EAS (Expo Application Services). Jalankan perintah berikut untuk build:
+
+```bash
+eas build --platform android   # Build APK/AAB
+eas build --platform ios       # Build IPA
+eas update                     # OTA update langsung ke pengguna
+```
+
+Pastikan sudah login ke Expo dan file `eas.json` sudah terkonfigurasi.
 
 ---
 
-## 💡 Tips Penggunaan
+## Tips Penggunaan
 
 - **Long-press** kartu acara untuk menghapus acara
 - **Long-press** baris anggota untuk menghapus anggota
 - Gunakan shortcut **+50rb / +100rb / Lunas** saat update cicilan
 - Tombol **Share** otomatis mengelompokkan anggota per status
-
----
-
-## 🛠️ Langkah Selanjutnya
-
-- [ ] Dark mode dengan `useColorScheme()`
-- [ ] Export laporan ke PDF dengan `expo-print`
-- [ ] Foto bukti transfer dengan `expo-image-picker`
-- [ ] Notifikasi pengingat dengan `expo-notifications`
-- [ ] Build ke APK: `eas build --platform android`

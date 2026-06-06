@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Kas Acara",
-    "slug": "patungan-app",
+    "name": "CauseFast",
+    "slug": "causefast",
     "version": "1.0.0",
     "sdkVersion": "54.0.0",
     "orientation": "portrait",
@@ -15,19 +15,13 @@
       "permissions": []
     },
     "plugins": [
-      "@react-native-community/datetimepicker",
-      "expo-updates"
+      "@react-native-community/datetimepicker"
     ],
-    "updates": {
-      "enabled": true,
-      "fallbackToCacheTimeout": 30000,
-      "checkAutomatically": "NEVER",
-      "url": "https://u.expo.dev/PASTE_PROJECT_ID_HERE"
-    },
     "extra": {
       "eas": {
-        "projectId": "PASTE_PROJECT_ID_HERE"
+        "projectId": "800c18d1-2626-4afb-91df-1a4d02007a03"
       }
-    }
+    },
+    "owner": "tokoqudas-organization"
   }
 }
