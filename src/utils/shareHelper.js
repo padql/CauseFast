@@ -7,6 +7,13 @@ import {
   formatRupiah,
 } from './statusHelper';
 
+function formatTanggal(str) {
+  if (!str || str === 'Belum ditentukan') return str || 'Belum ditentukan';
+  const [y, m, d] = str.split('-');
+  const bulan = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+  return `${parseInt(d)} ${bulan[parseInt(m) - 1]} ${y}`;
+}
+
 export async function shareKeWhatsApp(event) {
   const { nama, targetDana, tanggal, anggota } = event;
 
@@ -36,9 +43,9 @@ export async function shareKeWhatsApp(event) {
     garis,
     '',
     `Acara        : ${nama}`,
-    `Tanggal      : ${tanggal}`,
+    `Tanggal      : ${formatTanggal(tanggal)}`,
     ...(event.deadlinePembayaran && event.deadlinePembayaran !== 'Belum ditentukan'
-      ? [`Deadline     : ${event.deadlinePembayaran}`]
+      ? [`Deadline     : ${formatTanggal(event.deadlinePembayaran)}`]
       : []),
     `Target       : ${formatRupiah(targetDana)}`,
     `Terkumpul    : ${formatRupiah(terkumpul)} (${persen}%)`,
