@@ -82,7 +82,7 @@ export default function AddAnggotaModal({ visible, onClose, onSubmit, existingAn
       <View style={s.container}>
         <TouchableOpacity style={StyleSheet.absoluteFill} activeOpacity={1} onPress={handleClose} />
         <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={s.keyboardWrap}
         >
           <View style={s.sheet}>

@@ -151,7 +151,7 @@ export default function AddEventModal({ visible, onClose, onSubmit }) {
       <View style={s.container}>
         <TouchableOpacity style={StyleSheet.absoluteFill} activeOpacity={1} onPress={handleClose} />
         <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={s.keyboardWrap}
         >
           <View style={s.sheet}>
