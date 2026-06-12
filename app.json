@@ -2,7 +2,7 @@
   "expo": {
     "name": "CauseFast",
     "slug": "causefast",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "sdkVersion": "54.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",

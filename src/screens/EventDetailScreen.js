@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Alert,
+  Dimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -123,7 +124,7 @@ export default function EventDetailScreen({ event, onBack, onUpdate }) {
         </Text>
       </View>
 
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
         {/* ── SECTION: PROGRES DANA ── */}
         <View style={s.progressSection}>
           <View style={s.amountRow}>
@@ -224,7 +225,6 @@ export default function EventDetailScreen({ event, onBack, onUpdate }) {
           )}
         </View>
 
-        <View style={{ height: 140 }} />
       </ScrollView>
 
       {/* ── FOOTER: BACK + SHARE ── */}
@@ -421,7 +421,7 @@ const createStyles = (c) => StyleSheet.create({
     color: '#fff',
   },
   memberScrollView: {
-    maxHeight: 710,
+    maxHeight: Dimensions.get('window').height * 0.6,
   },
   emptyAnggota: {
     paddingVertical: 24,
@@ -435,10 +435,6 @@ const createStyles = (c) => StyleSheet.create({
   },
   // Footer
   footer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
     backgroundColor: c.bgPrimary,
     paddingHorizontal: 16,
     paddingVertical: 12,

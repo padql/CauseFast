@@ -10,6 +10,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  Dimensions,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -151,7 +152,7 @@ export default function AddEventModal({ visible, onClose, onSubmit }) {
       <View style={s.container}>
         <TouchableOpacity style={StyleSheet.absoluteFill} activeOpacity={1} onPress={handleClose} />
         <KeyboardAvoidingView
-          behavior="padding"
+          behavior={Platform.OS === 'web' ? undefined : 'padding'}
           style={s.keyboardWrap}
         >
           <View style={s.sheet}>
@@ -344,6 +345,7 @@ const createStyles = (c) => StyleSheet.create({
     borderTopRightRadius: 24,
     padding: 24,
     paddingBottom: 40,
+    maxHeight: Dimensions.get('window').height * 0.9,
   },
   handle: {
     width: 40,
@@ -414,7 +416,7 @@ const createStyles = (c) => StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 8,
     marginVertical: 1,
-    overflow: 'scroll',
+    overflow: 'hidden',
   },
   memberSelected: {
     backgroundColor: c.bgPrimary,

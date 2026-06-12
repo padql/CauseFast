@@ -1,7 +1,8 @@
-import React, { useState, Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import React, { useState, Component, useEffect } from 'react';
+import { View, Text, ScrollView, ActivityIndicator, StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import * as Font from 'expo-font';
 import { ThemeProvider, useTheme } from './src/context/ThemeContext';
 import EventListScreen from './src/screens/EventListScreen';
 import EventDetailScreen from './src/screens/EventDetailScreen';
@@ -59,6 +60,22 @@ function Main() {
 }
 
 export default function App() {
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  useEffect(() => {
+    Font.loadAsync({
+      ionicons: require('@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/Ionicons.ttf'),
+    }).then(() => setFontsLoaded(true));
+  }, []);
+
+  if (!fontsLoaded) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#1C1C1E' }}>
+        <ActivityIndicator size="large" color="#4A90D9" />
+      </View>
+    );
+  }
+
   return (
     <ErrorBoundary>
       <SafeAreaProvider>
